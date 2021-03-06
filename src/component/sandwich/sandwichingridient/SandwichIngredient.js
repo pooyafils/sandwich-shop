@@ -10,7 +10,7 @@ class SandwichIngredient extends Component{
         switch (this.props.type) {
 
             case('bread-bottom'):
-                ingrdient = <div className={classes.BreadTop}></div>
+                ingrdient = <div className={classes.BreadBottom}></div>
                 break;
             case ('bread-top'):
                 ingrdient = (
