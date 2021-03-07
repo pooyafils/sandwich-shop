@@ -12,7 +12,9 @@ const BulidControls=(props)=>{
     return(
         <div className={classes.BulidControls} >
             {controls.map(ctrl=>(
-                <BulidControl key={ctrl.label} label={ctrl.label}/>
+                <BulidControl added={()=>props.ingredientadded(ctrl.type)}
+                              type={ctrl.type}
+                    key={ctrl.label} label={ctrl.label}/>
             ))}
         </div>
     )
