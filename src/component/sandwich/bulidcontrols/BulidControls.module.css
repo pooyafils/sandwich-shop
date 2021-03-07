@@ -1,0 +1,10 @@
+.BulidControls{
+    width: 100%;
+    background-color: #bf3813;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 1px #ccc;
+    flex-flow: column;
+    margin: auto;
+    padding: 10px 0;
+}

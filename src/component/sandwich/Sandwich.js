@@ -14,7 +14,7 @@ const Sandwich=(props)=>{
     }
     console.log(trasformedIngrident)
  return(
-     <div className={classes.Burger}>
+     <div className={classes.Sandwich}>
          <SandwichIngredient type="bread-top"/>
       {/*   <SandwichIngredient type="meat"/>
          <SandwichIngredient type="cheese"/>*/}
