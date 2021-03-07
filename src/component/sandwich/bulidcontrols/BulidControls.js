@@ -11,9 +11,12 @@ const BulidControls=(props)=>{
 
     return(
         <div className={classes.BulidControls} >
+            <p>Cutrrent price : <strong>{props.price.toFixed(2)}</strong></p>
             {controls.map(ctrl=>(
                 <BulidControl added={()=>props.ingredientadded(ctrl.type)}
+                              removed={()=>props.ingridentRemoveed(ctrl.type)}
                               type={ctrl.type}
+                              disabled={props.disabed[ctrl.type]}
                     key={ctrl.label} label={ctrl.label}/>
             ))}
         </div>
