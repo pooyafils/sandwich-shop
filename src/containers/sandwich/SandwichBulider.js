@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import Auxs from '../../hoc/Auxs'
 import Sandwich from '../../component/sandwich/Sandwich'
 import BulidControls from "../../component/sandwich/bulidcontrols/BulidControls";
+import BulidControl from "../../component/sandwich/bulidcontrols/bulidcontrol/Bulidcontrol";
 const INGREDIENT_PRICE={
     salad:0.5,
     cheese:0.4,
@@ -21,9 +22,15 @@ class sandwichBuilder extends Component{
             cheese:0,
             meat:0
         },
-        totalPrice:4
+        totalPrice:4,
+        purchaseable:false
     }
-
+updatePurchaseState(ingridents){
+        // const ingrident={...this.state.ingredient}
+        const sum=Object.keys(ingridents).map(igkey=>{return ingridents[igkey]})
+            .reduce((sum,el)=>{return sum+el},0)
+    this.setState({purchaseable:sum>0})
+}
    addIngridentHandler=(type)=> {
        const oldCount = this.state.ingredient[type]
        const updatedCount = oldCount + 1;
@@ -34,6 +41,7 @@ const priceAddtion=INGREDIENT_PRICE[type]
         const oldPrice=this.state.totalPrice;
 const newPrice=oldPrice+priceAddtion;
        this.setState({totalPrice:newPrice, ingredient:updatedIngrident});
+       this.updatePurchaseState(updatedIngrident);
 
     }
     removeIngridientHandler=(type)=>{
@@ -50,6 +58,7 @@ const newPrice=oldPrice+priceAddtion;
         const oldPrice=this.state.totalPrice;
         const newPrice=oldPrice-priceDedution;
         this.setState({totalPrice:newPrice, ingredient:updatedIngrident});
+        this.updatePurchaseState(updatedIngrident);
 
 
     }
@@ -70,6 +79,7 @@ render() {
     <BulidControls ingridentRemoveed={this.removeIngridientHandler}
         ingredientadded={this.addIngridentHandler}
     disabed={disableInfo}
+                   purchaseable={this.state.purchaseable}
     price={this.state.totalPrice}/>
 </Auxs>
     )

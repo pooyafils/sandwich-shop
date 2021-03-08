@@ -17,8 +17,10 @@ const BulidControls=(props)=>{
                               removed={()=>props.ingridentRemoveed(ctrl.type)}
                               type={ctrl.type}
                               disabled={props.disabed[ctrl.type]}
+
                     key={ctrl.label} label={ctrl.label}/>
             ))}
+            <button disabled={!props.purchaseable} className={classes.OrderButton}>ORDER NOW </button>
         </div>
     )
 }
